@@ -22,9 +22,9 @@ origin = Origin{Float64}()
 link1 = Body(box1)
 
 # Constraints
-impact = InequalityConstraint(Impact(link1,[0;0;1.0]; p = v))
 
 joint0to1 = EqualityConstraint(Floating(origin, link1))
+impact = InequalityConstraint(Impact(link1,[0;0;1.0]; p = v))
 
 eqcs = [joint0to1]
 ineqcs = [impact]
@@ -34,8 +34,8 @@ shapes = [box1]
 mech = Mechanism(origin, [link1], eqcs, ineqcs, shapes = shapes)
 
 setPosition!(link1,x = [0.;-2;1.5])
-ωtemp = (rand(3) .- 0.5) * 100
 
+ωtemp = (rand(3) .- 0.5) * 100
 setVelocity!(link1,v = [0;3;7.],ω = ωtemp)
 
 storage = simulate!(mech, 10., record = true)

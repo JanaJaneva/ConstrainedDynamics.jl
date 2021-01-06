@@ -17,7 +17,7 @@ phi = pi / 4
 q1 = UnitQuaternion(RotX(phi))
 
 # Links
-N = 20
+N = 1
 
 origin = Origin{Float64}()
 links = [Body(b1) for i = 1:N]
